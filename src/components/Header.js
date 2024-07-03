@@ -23,8 +23,8 @@ const Header = () => {
             <img className='w-44 ' src='https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png' alt='logo' />
 
             {user && <div className='flex items-center'>
-                <div className='mr-2 flex flex-col justify-center'>
-                    <p className='text-white'>{user.displayName}</p>
+                <div className='mr-2 fle flex-col justify-center'>
+                    <p className='text-white text-center'>{user.displayName}</p>
                     <button className='font-semibold text-red-200 hover:text-red-500' onClick={handleSignOut}>(Sign Out)</button>
                 </div>
                 
