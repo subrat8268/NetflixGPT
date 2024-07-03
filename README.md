@@ -12,8 +12,13 @@
 - Create Signup User Account
 - Create Login User Account
 - Created Redux Store with userSlice
-- 
-
+- Implemented Sign Out
+- Update Profile
+- BugFix: Sign up user displayName and name
+- BugFix: If the user is not logged in Redirect /browse to login page and vice versa
+- Unscribed to the onAuthStateChanged callback
+- Registere TMBD Api & get access token
+- Get Data from TMBD Api by using Now Playing Api List
 
 
 
