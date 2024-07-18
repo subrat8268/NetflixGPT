@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { PiSignOutFill } from "react-icons/pi";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { RiArrowDropDownLine } from "react-icons/ri";
+
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,11 +17,15 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => { })
       .catch((error) => {
         navigate("/error");
       });
   };
+
+  const handleGPTSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -45,6 +52,25 @@ const Header = () => {
 
       {user && (
         <div className="h-full flex items-center">
+          <select id="language" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-4">
+          
+
+            <option >Choose a language</option>
+            <option selected value="en">English</option>
+            <option value="hindi">Hindi</option>
+            <option value="spanish">Spanish</option>
+
+           
+
+          </select>
+
+          <button
+            className="py-2 px-4 bg-blue-200 hover:bg-blue-400 rounded-md mr-4"
+            onClick={handleGPTSearchClick}
+          >
+            GPT Search
+          </button>
+
           <div className="mr-2 flex flex-col justify-center">
             <p className="text-white text-center">{user.displayName}</p>
             <button

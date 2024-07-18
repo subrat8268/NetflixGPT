@@ -29,6 +29,12 @@
 - Updated Store with Trailer Video Data
 - Embedded the YouTube video with autoplay and mute
 - Added Tailwind Classes to enhance the appearance of the main container
+- Build Secondary Component
+- Build Movie List & Movie Card
+- TMBD Imag CDN URL
+- Made the browse page amazing with Tailwind CSS
+- usePopular Movies Custom Hook
+- GPT Search Feature
 
 ## Features
 
