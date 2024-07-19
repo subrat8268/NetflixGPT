@@ -7,7 +7,6 @@ import { PiSignOutFill } from "react-icons/pi";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
-import { RiArrowDropDownLine } from "react-icons/ri";
 
 
 const Header = () => {
@@ -31,7 +30,7 @@ const Header = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
-        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        dispatch(addUser({ uid, email, displayName }));
         navigate("/browse");
       } else {
         dispatch(removeUser());
@@ -40,28 +39,23 @@ const Header = () => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [dispatch, navigate]);
 
   return (
     <div className="fixed w-full flex items-center justify-between px-8 py-2 bg-gradient-to-b from-black z-10">
       <img
-        className="w-44 "
+        className="w-44"
         src={LOGO}
         alt="logo"
       />
 
       {user && (
         <div className="h-full flex items-center">
-          <select id="language" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-4">
-          
-
-            <option >Choose a language</option>
+          <select id="language" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-4">
+            <option>Choose a language</option>
             <option selected value="en">English</option>
             <option value="hindi">Hindi</option>
             <option value="spanish">Spanish</option>
-
-           
-
           </select>
 
           <button
