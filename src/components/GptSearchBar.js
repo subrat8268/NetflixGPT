@@ -1,32 +1,30 @@
 import React from 'react';
 import lang from '../utils/langConstants';
+import { useSelector } from 'react-redux';
 
 const GptSearchBar = () => {
+    const langKey = useSelector(store => store.config.lang);
+
     return (
-        <div className="flex flex-col w-[800px] justify-center">
-            <div className="relative p-12 w-full sm:max-w-2xl sm:mx-auto">
-                <div className="overflow-hidden z-0 rounded-full relative p-1.5">
-                    <form className="relative flex z-50 bg-white rounded-full">
-                        
-                        <input 
-                            type="text" 
-                            placeholder={lang.en.gptPlaceholder} 
-                            className="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none" 
-                        />
+        <div className="flex flex-col w-[600px] justify-center">
 
-                        <button 
-                            className="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none"
-                        >
-                            {lang.en.search}
-                        </button>
+            <form className="relative flex p-2 rounded-md z-50 bg-black">
+                
+                <input
+                    type="text"
+                    placeholder={lang[langKey].gptPlaceholder}
+                    className="rounded-md flex-1 px-6 py-4 mr-2 text-gray-700 focus:outline-none"
+                />
 
-                    </form>
-                    <div className="glow glow-1 z-10 bg-pink-400 absolute"></div>
-                    <div className="glow glow-2 z-20 bg-purple-400 absolute"></div>
-                    <div className="glow glow-3 z-30 bg-yellow-400 absolute"></div>
-                    <div className="glow glow-4 z-40 bg-blue-400 absolute"></div>
-                </div>
-            </div>
+                <button
+                    className="bg-[#d9232e] text-white rounded-md font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none"
+                >
+                    {lang[langKey].search}
+                </button>
+
+            </form>
+
+
         </div>
     );
 }

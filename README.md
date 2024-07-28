@@ -34,7 +34,9 @@
 - TMBD Imag CDN URL
 - Made the browse page amazing with Tailwind CSS
 - usePopular Movies Custom Hook
-- GPT Search Feature
+- GPT Search Page
+- GPT Search Bar
+- (BONUS) Multi-language Feature in our App
 
 ## Features
 

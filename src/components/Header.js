@@ -5,14 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { PiSignOutFill } from "react-icons/pi";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO } from "../utils/constants";
+import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch)
 
   const handleSignOut = () => {
     signOut(auth)
@@ -24,6 +26,10 @@ const Header = () => {
 
   const handleGPTSearchClick = () => {
     dispatch(toggleGptSearchView());
+  }
+
+  const handleLangChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
   }
 
   useEffect(() => {
@@ -51,18 +57,27 @@ const Header = () => {
 
       {user && (
         <div className="h-full flex items-center">
-          <select id="language" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-4">
-            <option>Choose a language</option>
-            <option selected value="en">English</option>
-            <option value="hindi">Hindi</option>
-            <option value="spanish">Spanish</option>
-          </select>
+          {showGptSearch && (
+
+            <select
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-4"
+              onChange={handleLangChange}
+            >
+
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+
+            </select>
+          )}
 
           <button
-            className="py-2 px-4 bg-blue-200 hover:bg-blue-400 rounded-md mr-4"
+            className="py-2 px-4 bg-[#d9232e] text-white rounded-md mr-4"
             onClick={handleGPTSearchClick}
           >
-            GPT Search
+            {showGptSearch ? "Home Page" : "GPT Search"}
           </button>
 
           <div className="mr-2 flex flex-col justify-center">
