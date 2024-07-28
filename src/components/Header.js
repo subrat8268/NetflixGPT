@@ -7,7 +7,6 @@ import { PiSignOutFill } from "react-icons/pi";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LOGO } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
-import { RiArrowDropDownLine } from "react-icons/ri";
 
 
 const Header = () => {
